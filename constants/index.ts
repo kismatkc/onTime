@@ -1,3 +1,3 @@
-export type topicsType = "Sleep"| "Weather"| "TTC"
+export type topicsType = "Sleep" | "TTC";
 
-export const topics: topicsType[] = ["Sleep", "Weather", "TTC"]
+export const topics: topicsType[] = ["Sleep", "TTC"];

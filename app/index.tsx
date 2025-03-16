@@ -1,11 +1,26 @@
+import { ArrowLeft } from "lucide-react-native";
 import { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import Sleep from "~/components/sleep";
+import TTC from "~/components/ttc";
 import { topics, topicsType } from "~/constants";
+import { useFetchTtcData } from "~/lib/fetch-ttc-data";
+
 const Home = ({}) => {
-  const [view, setView] = useState<topicsType | null>("Sleep");
+  const [view, setView] = useState<topicsType | null>("TTC");
   // const [view, setView] = useState<topicsType | null>(null);
-  if (view === "Sleep") return <Sleep />;
+  const { news, busTimings } = useFetchTtcData();
+  if (view) {
+    return (
+      <View className="flex flex-col gap-y-3">
+        <Text className="pl-1">
+          <ArrowLeft onPress={() => setView(null)} color={"black"} size={30} />
+        </Text>
+        {view === "Sleep" && <Sleep />}
+        {view === "TTC" && <TTC news={news} busTimings={busTimings} />}
+      </View>
+    );
+  }
   return (
     <View className="flex flex-col h-full px-2 gap-y-3">
       {topics.map((subject) => (

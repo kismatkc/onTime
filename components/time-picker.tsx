@@ -22,17 +22,19 @@ const TimePickerComponent = ({
   const [time, setTime] = useState<Date>(date);
 
   return (
-    <View className="flex flex-col">
+    <View className="flex flex-col ">
       <Text className="text-3xl font-bold text-center my-3"> Custom Time</Text>
-      <View className="flex flex-row items-center  w-full">
-        <Text className="text-2xl font-semibold ">Select desired Time:</Text>
-        <DateTimePicker
-          value={time}
-          mode="time"
-          is24Hour={false}
-          display="default"
-          onChange={onChange}
-        />
+      <View className="flex flex-row items-center  w-full justify-between">
+        <View className="flex flex-row items-center">
+          <Text className="text-2xl font-semibold ">Select desired Time:</Text>
+          <DateTimePicker
+            value={time}
+            mode="time"
+            is24Hour={false}
+            display="default"
+            onChange={onChange}
+          />
+        </View>
         <Button
           title="Set alarm"
           color="green"

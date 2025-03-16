@@ -4,16 +4,19 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "*"
-      ]
+      "react-native": ["node_modules/react-native"],
+
+      "~/*": ["*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "nativewind-env.d.ts",
+    "app.config.js",
+    "lib/utils.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
+    "lib/fetch-ttc-data.js"
   ]
 }

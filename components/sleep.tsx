@@ -7,7 +7,7 @@ import TimePickerComponent from "./time-picker";
 
 const setAlarm = (date: Date) => {
   const localDateString = format(date, "hh:mm aa");
-  const shortcutURL = `shortcuts://run-shortcut?name=alarm&input=${encodeURIComponent(
+  const shortcutURL = `shortcuts://run-shortcut?name=set-alarm&input=${encodeURIComponent(
     localDateString
   )}`;
 
@@ -16,6 +16,13 @@ const setAlarm = (date: Date) => {
   );
 };
 
+const deleteAllAlarms = () => {
+  const shortcutURL = "shortcuts://run-shortcut?name=delete-alarms";
+
+  Linking.openURL(shortcutURL).catch((err) =>
+    console.error("Error opening shortcut:", err)
+  );
+};
 const Sleep = ({}) => {
   const [time, setTime] = useState<Date>(new Date());
 
@@ -36,9 +43,21 @@ const Sleep = ({}) => {
         </Text>
       </View>
       <View className="mt-6 flex-col gap-y-2">
+        <View className="flex flex-row gap-x-1 items-center justify-between">
+          <Text className="text-2xl font-bold  ">
+            Delete all existing alarms:
+          </Text>
+
+          <Button
+            title="Delete all alarms"
+            color="red"
+            onPress={() => deleteAllAlarms()}
+          />
+        </View>
         <Text className="text-3xl font-bold text-center mb-3">
           Ideal section
         </Text>
+
         <View className="flex flex-row gap-x-1 items-center justify-between">
           <View className="flex flex-row gap-x-1">
             <Text className="text-xl font-bold">For 8hrs 10mins sleep:</Text>
