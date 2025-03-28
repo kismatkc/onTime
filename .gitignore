@@ -31,7 +31,7 @@ ios/
 
 
 
-android
+android/
 build/
 
 # local env files
