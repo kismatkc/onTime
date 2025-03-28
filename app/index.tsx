@@ -3,12 +3,12 @@ import { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import Sleep from "~/components/sleep";
 import TTC from "~/components/ttc";
+import WeatherApp from "~/components/weather";
 import { topics, topicsType } from "~/constants";
-import { useFetchTtcData } from "~/lib/fetch-ttc-data";
+import { useFetchTtcData } from "~/lib/fetch-datas";
 
 const Home = ({}) => {
-  const [view, setView] = useState<topicsType | null>("TTC");
-  // const [view, setView] = useState<topicsType | null>(null);
+  const [view, setView] = useState<topicsType | null>(null);
   const { news, busTimings } = useFetchTtcData();
   if (view) {
     return (
@@ -18,6 +18,7 @@ const Home = ({}) => {
         </Text>
         {view === "Sleep" && <Sleep />}
         {view === "TTC" && <TTC news={news} busTimings={busTimings} />}
+        {view === "Weather" && <WeatherApp />}
       </View>
     );
   }
