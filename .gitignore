@@ -28,6 +28,7 @@ yarn-error.*
 .DS_Store
 *.pem
 ios/
+android/
 build/
 
 # local env files
